@@ -1,0 +1,9 @@
+﻿numpy
+pandas
+python-dateutil
+six
+tzdata
+jupyter
+jupyterlab
+pyarrow
+fastparquet

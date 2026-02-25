@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  spark:
+    build: .
+    container_name: spark_enem
+    volumes:
+      - ./dados:/app/dados
+      - ./data_lake:/app/data_lake
+    command: bash src/run_pipeline.sh
+
+  jupyter:
+    build: .
+    container_name: jupyter_enem
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./dados:/app/dados
+      - ./data_lake:/app/data_lake
+      - ./notebooks:/app/notebooks
+      - ./src:/app/src
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root

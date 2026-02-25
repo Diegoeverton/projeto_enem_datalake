@@ -1,0 +1,44 @@
+# ==================================
+# 1. Ignorar Dados Brutos e Extrações
+# ==================================
+# A pasta 'dados' abriga os .zips originais (>600MB) e os CSVs extraídos gigantescos.
+# O GitHub bloqueia arquivos maiores que 100MB. Isso IMPEDE que seu push falhe!
+dados/*
+!dados/.gitkeep
+
+# ==================================
+# 2. Ignorar Camadas do Data Lake
+# ==================================
+# O Data Lake processado via Spark local não deve ir para o versionamento.
+data_lake/*
+!data_lake/.gitkeep
+
+data_lake/bronze/
+data_lake/prata/
+
+# ==================================
+# 3. Cache do Python e Spark
+# ==================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.crc
+_SUCCESS
+.spark-staging
+derby.log
+metastore_db/
+
+# ==================================
+# 4. Ambientes Virtuais 
+# ==================================
+venv/
+.env
+.venv/
+env/
+
+# ==================================
+# 5. Jupyter Notebooks e IDEs
+# ==================================
+.ipynb_checkpoints/
+.vscode/
+.idea/
