@@ -7,7 +7,11 @@ services:
     volumes:
       - ./dados:/app/dados
       - ./data_lake:/app/data_lake
-    command: bash src/run_pipeline.sh
+      - ./src:/app/src          # Scripts de transformação montados ao vivo
+      - ./run.sh:/app/run.sh    # Orquestrador modular
+    # Container fica SEMPRE VIVO — pipeline é acionada via "docker exec"
+    # Exemplo: docker exec spark_enem bash /app/run.sh --fonte enem --etapa bronze
+    command: tail -f /dev/null
 
   jupyter:
     build: .
